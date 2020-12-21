@@ -5,14 +5,48 @@ const MAIN_COLOR1 = "#003f5c"
 const MAIN_COLOR2 = "#fb5b5a"
 const MAIN_COLOR3 = "#dee2e6"
 const BACKGROUND_LOGIN =  "white"
-const BACKGROUND_COLOR =  '#edeff3'
+const BACKGROUND_COLOR =  '#FFFFFF'
+
 
 const styles = StyleSheet.create({
+  logologin:{
+    marginLeft:'auto',
+    marginRight:'auto',
+    width:120,
+    height:80,
+    marginTop:-60,
+    marginBottom:10
+  },
+  bglogin :{
+    flex: 1,
+    width: '100%',
+    resizeMode: "cover",
+    justifyContent: "center",
+  },
+  boxlogin: {
+    height: 'auto',
+    width: '90%',
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    //backgroundColor: 'rgba(255,255,255,1)',
+    borderRadius: 5,
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom:150,
+    paddingTop:30,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 5,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'stretch',
-    backgroundColor: '#edeff3', 
+    //backgroundColor: '#FFFFFF', 
   },
   row: {
     flex: 1,
@@ -76,18 +110,34 @@ const styles = StyleSheet.create({
   },
   sologan :{
     fontWeight:"bold",
-    fontSize:50,
-    color: colors.secondary,
-    padding: 3,
+    fontSize:30,
+    color: colors.light,
+    opacity:0.7,
+    padding:10,
+    paddingBottom: 30,
   },
-  inputView:{
-    width:"80%",
-    backgroundColor: colors.primary,
-    borderRadius:25,
-    height:50,
-    marginBottom:20,
+  iconinput:{
+    position:'absolute',
+    backgroundColor: colors.info,
+    width:40,
+    height:40,
+    borderTopLeftRadius:5,
+    borderBottomLeftRadius:5,
     justifyContent:"center",
-    padding:20
+  }, 
+  inputView:{
+    width:"85%",
+    backgroundColor: colors.light,
+    height:30,
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom:15,
+    justifyContent:"center",
+    padding:20,
+    paddingLeft:50,
+    borderRadius:5,
+    position:'relative',
+    backgroundColor: 'rgba(255,255,255,0.3)',
   },
   inputViewRemark:{
     width:"90%",
@@ -109,20 +159,20 @@ const styles = StyleSheet.create({
   },
   // Login
   loginBtn:{
-    backgroundColor:colors.primary,
-    borderRadius:50,
-    height:50,
+    backgroundColor:colors.info,
+    borderRadius:5,
+    height:40,
     alignItems:"center",
     justifyContent:"center",
-    marginTop:20,
-    marginBottom:10
+    marginBottom:15,
+    marginLeft:'auto',
+    marginRight:'7.5%',
   },
   loginText:{
     color:"white"
   },
   inputText:{
     height:50,
-    color:"white"
   },
   inputTextBlack:{
     height:50,

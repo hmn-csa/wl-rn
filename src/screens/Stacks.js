@@ -12,8 +12,8 @@ import User from './User'
 import ManagerStaff from './ManagerStaff'
 
 // import Test from './test'
-import Maps from './Maps'
-import CheckinMap from './CheckinMap'
+// import Maps from './Maps'
+// import CheckinMap from './CheckinMap'
 import ListUptrail from './ListUptrail'
 import{ styles, colors } from '../styles'
 
@@ -97,7 +97,7 @@ function StafflistStack(props) {
         }}
       />
 
-      <Stack.Screen 
+      {/* <Stack.Screen 
         name="CheckinMap" 
         component={CheckinMap} 
         options={{
@@ -109,7 +109,7 @@ function StafflistStack(props) {
             fontWeight: 'bold',
           }
         }}
-      />    
+      />     */}
 
       
    </Stack.Navigator>
@@ -232,9 +232,9 @@ function PortStack(props) {
     
       <Stack.Navigator >
       <Stack.Screen 
-        name="List" 
-        component={ListAppls}  
-        options={{
+          name="List" 
+          component={ListAppls}  
+          options={{
           headerStyle: {
             backgroundColor: colors.secondary,
           },
@@ -341,7 +341,7 @@ function PortStack(props) {
           }
         }}
       />
-      
+{/*       
       <Stack.Screen 
         name="Maps" 
         component={Maps}
@@ -354,7 +354,7 @@ function PortStack(props) {
             fontWeight: 'bold',
           }
         }}
-      /> 
+      />  */}
     </Stack.Navigator> 
     
   );

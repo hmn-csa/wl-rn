@@ -18,8 +18,13 @@ const colors = {
   black: '#000000',
   green: '#6DD0A3',
   yellow: '#ffc247',
-
   textcolor: '#008B8B',
+  success: '#28a745',
+  info: '#17a2b8',
+  warning: '#ffc107',
+  danger: '#dc3545',
+  light: '#f8f9fa',
+  dark: '#343a40',
 };
 
 export default colors;

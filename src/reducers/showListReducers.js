@@ -4,7 +4,7 @@ const showListReducers = (state = {applIds :[], isTodoClass: true}, action) => {
 
   switch(action.type) {
     case constAction.SHOWLIST_CLEAR:
-      state =  {applIds :[], isTodoClass: true}
+      state =  {applIds :[], isTodoClass: true} 
       return state;
 
     case constAction.UPDATE_SHOWLIST:

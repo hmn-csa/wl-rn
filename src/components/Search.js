@@ -21,6 +21,7 @@ function Search(props) {
     } catch(err) {
       console.log(err)
     }
+    
   }
   
   return (
@@ -51,7 +52,7 @@ function Search(props) {
             navigation={props.navigation}/>}
       />
   
-      </View>
+    </View>
   )
 }
  

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { StyleSheet, Text, View , TextInput, TouchableOpacity, Button, Alert} from 'react-native';
 import { connect } from "react-redux";
 import { actlogoutUser, clearUptrail, 
@@ -7,9 +8,8 @@ import { actlogoutUser, clearUptrail,
 
 
 function User(props) {
-  const outUsers = () => {
-    props.logout()
-  };
+
+  const outUsers = () => props.logout()
 
   return (
     <View style={styles.container}>
