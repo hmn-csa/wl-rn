@@ -12,7 +12,6 @@ import ManagerApp from './ManagerApp'
 
 
 function MyApp(props) {
-  console.log(props.token.token)
   if (props.token.token === null || props.token.token === undefined)
     return (
       <View style={styles.container}>

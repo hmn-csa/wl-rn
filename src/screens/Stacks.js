@@ -26,46 +26,21 @@ function DashboardStack(props) {
   
   return (
     <Stack.Navigator
-    screenOptions={{ headerShown: true,}}
+    screenOptions={{headerShown: true,}}
     >
      <Stack.Screen 
-        name="Dashboard" 
+        name="Tổng quát" 
         component={Dashboard} 
-
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
+            elevation: 0,
+            shadowOpacity: 0
           },
-          headerTintColor: '#fff',
+          headerTintColor: colors.secondary,
           headerTitleStyle: {
             fontWeight: 'bold',
           }, 
-          //headerRight: CategorieStackMenu,
-          // headerRight: () => (
-          //   <View style={buttonStyles.buttons}>
-          //     <Button
-          //       mode="contained"
-          //       icon="file-tree"
-          //       onPress={() => props.navigation.navigate('Dashboard', { screen: 'Tree' })}
-          //       style={buttonStyles.button}
-          //     >
-          //     </Button>
-          //     <Button
-          //       mode="contained"
-          //       icon="alpha-p-circle"
-          //       onPress={() => props.navigation.navigate('Dashboard', { screen: 'Product' })}
-          //       style={buttonStyles.button}z
-          //     >
-          //     </Button>
-          //     <Button
-          //       icon="counter"
-          //       mode="contained"
-          //       onPress={() => props.navigation.navigate('Dashboard', { screen: 'Score' })}
-          //       style={buttonStyles.button}
-          //     >
-          //     </Button>
-          // </View>
-          // )
         }}
       />
 
@@ -88,7 +63,7 @@ function StafflistStack(props) {
         component={ManagerStaff} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -102,7 +77,7 @@ function StafflistStack(props) {
         component={CheckinMap} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -129,7 +104,7 @@ function CategorieStack(props) {
         
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -162,7 +137,7 @@ function CategorieStack(props) {
         component={ProductCategories}
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -195,7 +170,7 @@ function CategorieStack(props) {
         component={ScoreCategories}
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -236,7 +211,7 @@ function PortStack(props) {
           component={ListAppls}  
           options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -279,7 +254,7 @@ function PortStack(props) {
         component={ListUptrail} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -293,7 +268,7 @@ function PortStack(props) {
         component={Remark} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -306,7 +281,7 @@ function PortStack(props) {
         component={Vsf} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -319,7 +294,7 @@ function PortStack(props) {
         component={Skip}
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -333,7 +308,7 @@ function PortStack(props) {
         component={Search} 
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -347,7 +322,7 @@ function PortStack(props) {
         component={Maps}
         options={{
           headerStyle: {
-            backgroundColor: colors.secondary,
+            backgroundColor: colors.primary,
           },
           headerTintColor: '#fff',
           headerTitleStyle: {
@@ -370,7 +345,7 @@ const buttonStyles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 50,
     fontWeight: 'bold', 
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     // borderColor:colors.white,
   },
 

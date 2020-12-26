@@ -9,6 +9,26 @@ const BACKGROUND_COLOR =  '#FFFFFF'
 
 
 const styles = StyleSheet.create({
+  boxinfodevice:{
+    //backgroundColor: 'rgba(255,255,255,0.2)',
+    padding:20,
+
+  },
+  checkbox: {
+    alignSelf: "center",
+    fontSize:10
+  },
+  alertlogin:{
+    width:"85%",
+    height:20,
+    marginLeft:'auto',
+    marginRight:'auto',
+    textAlign:'left',
+    paddingLeft:50,
+    marginBottom:10,
+    backgroundColor: 'rgba(220,53,69,0.2)',
+    color:'red'
+  },
   logologin:{
     marginLeft:'auto',
     marginRight:'auto',
@@ -27,7 +47,6 @@ const styles = StyleSheet.create({
     height: 'auto',
     width: '90%',
     backgroundColor: 'rgba(255,255,255,0.3)',
-    //backgroundColor: 'rgba(255,255,255,1)',
     borderRadius: 5,
     marginLeft:'auto',
     marginRight:'auto',
@@ -44,9 +63,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    //backgroundColor: '#FFFFFF', 
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   row: {
     flex: 1,
@@ -82,26 +100,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: colors.primary,
   },
-  indexValue: {
-    textAlign: 'center', // <-- the magic
-    fontWeight: 'bold',
-    fontSize: 35,
-    paddingTop: 2,
-    color: colors.black,
-  },
-  indexValueSmall: {
-    textAlign: 'center', // <-- the magic
-    fontWeight: 'bold',
-    fontSize: 30,
-    paddingTop: 2,
-    color: colors.black
-  },
-  indexLabel: {
-    textAlign: 'center', // <-- the magic
-    fontSize: 10,
-    paddingBottom: 2,
-  },
-
   logo:{
     fontWeight:"bold",
     fontSize:15,
@@ -131,7 +129,7 @@ const styles = StyleSheet.create({
     height:30,
     marginLeft:'auto',
     marginRight:'auto',
-    marginBottom:15,
+    marginBottom:10,
     justifyContent:"center",
     padding:20,
     paddingLeft:50,
@@ -159,14 +157,11 @@ const styles = StyleSheet.create({
   },
   // Login
   loginBtn:{
-    backgroundColor:colors.info,
-    borderRadius:5,
-    height:40,
-    alignItems:"center",
-    justifyContent:"center",
-    marginBottom:15,
+    width:"85%",
     marginLeft:'auto',
     marginRight:'7.5%',
+    marginTop:10,
+    marginBottom:10
   },
   loginText:{
     color:"white"

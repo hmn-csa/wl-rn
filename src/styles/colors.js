@@ -1,5 +1,5 @@
 const colors = {
-  primary: "#465881", //'#6200ee',//'#555CC4',
+  primary: "#093e52", //'#6200ee',//'#555CC4',
   primaryLight: '#829BF8',
   primaryGradientStart: '#4f44b6',
   primaryGradientEnd: '#4f44b6',
@@ -7,7 +7,7 @@ const colors = {
   secondaryGradientEnd: '#FF1358',
   profileGradientStart: '#54CBF6',
   profileGradientEnd: '#49D2D0',
-  secondary: "#fb5b5a", //'#FF1358',
+  secondary: "#d71921", //'#FF1358',
   grey: '#acacac',
   gray: '#5f5f5f',
   darkGray: '#4d4d4d',

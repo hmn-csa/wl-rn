@@ -2,119 +2,84 @@ import React, { useState, useEffect } from 'react'
 import {
   View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView, ActivityIndicator
 } from 'react-native'
-
 import { Button } from 'react-native-paper';
-
 import { connect } from "react-redux"
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { actUpdateShowlist, actSetTodoShowlist, actGetUptrails, actSetActiveStaff } from "../actions"
-
-import { styles, colors } from '../styles'
+import { colors } from '../styles'
 import { color } from 'react-native-reanimated';
 import { SHOWLIST_CLEAR } from '../consts';
-//import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-
-
+import Loader from '../components/elements/Loader'
 
 function Dashboard(props) {
-  //const navigation = useNavigation()
-
-  // useEffect(() => {
-  //   if (props.uptrails.justFetching === false) {
-  //     props.setActiveStaff({'staff_id':1})
-  //     props.getUptrails({ token: props.token, start: "", end: "" })
-  //   }
-  //   else console.log('ddax tai')
-  // }, [props.uptrails.active_staff]);
-
   const [loading, setLoading] = useState(false)
-
   const handleShowTodo = () => {
-
     const list_todo = Object.values(props.data).filter(appl => appl.todo_flag == 1).map(a => a.appl_id);
     props.navigation.navigate('Portfolio', { screen: 'List' });
     props.updateShowlist(list_todo)
-    
-    console.log('show list:', list_todo)
-    //navigation.navigate('ListAppls')
-    //props.navigation.navigate('List');
   }
-
   const handleShow = (list, isTodo) => {
     props.setTodoShowlist(isTodo)
     props.navigation.navigate('Portfolio', { screen: 'List' })
     props.updateShowlist(list)
   }
-
   const moneyFormat = n => {
-    //return  n.toLocaleString().split(".")[0]
     const money = parseFloat(n, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
     return money.substring(0, money.length - 2)
   }
-
-  /*
-  const moneyFormat = amount => {
-    return Number(amount)
-      .toFixed(1)
-      .replace(/\d(?=(\d{3})+\.)/g, '$&,').replace(/.0/g, '');
-  }
-  */
   if (props.fetching || props.data === null) 
   return (
-    <View style={[styles.container, {alignItems: 'center'}]}>
-      <Text>Loading data... </Text>
-      <ActivityIndicator size={100} color={colors.primary}/> 
-    </View>
+    <Loader/>
   )
-  
   else 
   return (
-    <View style={[styles.container, { paddingTop: 20 }]}>
+    <View style={[styles.container]}>
       <View style={{ flex: 3 }}>
-        {/* BEGIN Todos */}
-        {/* <Text style={styles.header}>Todos</Text> */}
-
+        <View style={styles.ViewPaidTotal}>
+          <View style={styles.ViewSummarychild}>
+            <TouchableOpacity>
+              <Text style={styles.indexValue}>{props.totalCal.totalCase.case}</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <TouchableOpacity style={styles.ViewSummary}>
+          <View style={styles.ViewSummarychild}>
+          <Text style={styles.Titleinfo}>Tổng viếng thăm</Text>
+          </View>
+          <View style={styles.ViewSummarychild}>
+          <Text style={styles.Titleinfo}>Tổng HD có paid</Text>
+          </View>
+        </TouchableOpacity>
       
-
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={[cardStyles.container, { flex: 2.5}]}>
           <View style={[styles.row, { flex: 0.4 }]}>
             <Text style={[cardStyles.Text, { color: colors.lightGray }]}>
             {props.uptrails.active_staff} - {props.uptrails.active_infos.fc_name}
             </Text>
           </View>
-
-
           <View style={[styles.row, { flex: 0.4 }]}>
             <Text style={[cardStyles.Text, { color: colors.lightGray }]}>
               Danh mục tự chọn
             </Text>
           </View>
-
           <View style={[styles.row, { flex: 1.618, }]}>
             <View style={[styles.box]}>
               <TouchableOpacity
-                //style={{ borderBottomWidth: 1, borderBottomColor: colors.lightGray }}
                 onPress={() => handleShow(props.todoCal.todoCase.applIds, true)}>
                 <Text style={styles.indexLabel}>Số HĐ tự chọn</Text>
-                <Text
-                  style={styles.indexValueSmall}
-                >
+                <Text style={styles.indexValueSmall} >
                   {props.todoCal.todoCase.case}
                 </Text>
-
               </TouchableOpacity>
             </View>
             <View style={[styles.box]}>
               <TouchableOpacity
-                //style={{ borderBottomWidth: 1, borderBottomColor: colors.lightGray }}
                 onPress={() => handleShow(props.todoCal.todoFollowed.applIds, true)}>
                 <Text style={styles.indexLabel}>HĐ đã viếng thăm</Text>
-                <Text
-                  style={styles.indexValueSmall}
-                >{props.todoCal.todoFollowed.case}
+                <Text style={styles.indexValueSmall} >
+                  {props.todoCal.todoFollowed.case}
                 </Text>
-
               </TouchableOpacity>
             </View>
           </View>
@@ -131,13 +96,10 @@ function Dashboard(props) {
                 <Ionicons name='ios-checkmark-circle' style={[styles.logo, { color: colors.green }]} />
               HĐ đã thu
             </Text>
-              <Text
-                style={styles.indexValueSmall}
-              >
+              <Text style={styles.indexValueSmall} >
                 {props.todoCal.todoPaid.case}
               </Text>
             </TouchableOpacity>
-
             <TouchableOpacity
               style={[cardStyles.container, styles.box]}
               onPress={() => handleShow(props.todoCal.todoPtp.applIds, true)}>
@@ -145,59 +107,40 @@ function Dashboard(props) {
                 <Ionicons name='ios-heart' style={[styles.logo, { color: colors.green }]} />
               PTP
             </Text>
-              <Text
-                style={styles.indexValueSmall}
-              >
+              <Text style={styles.indexValueSmall} >
                 {props.todoCal.todoPtp.case}
               </Text>
-
             </TouchableOpacity>
-
             <TouchableOpacity
               style={[cardStyles.container, styles.box]}
               onPress={() => handleShow(props.todoCal.todoBptp.applIds, true)}>
-
               <Text style={styles.indexLabel}>
                 <Ionicons name='ios-close-circle' style={[styles.logo, { color: colors.secondary }]} />
               Hủy-PTP
             </Text>
-              <Text
-                style={styles.indexValueSmall}
-              >
+              <Text style={styles.indexValueSmall} >
                 {props.todoCal.todoBptp.case}
               </Text>
             </TouchableOpacity>
-
             <TouchableOpacity
               style={[cardStyles.container, styles.box]}
               onPress={() => handleShow(props.todoCal.todoRevisit.applIds, true)}>
-
               <Text style={styles.indexLabel}>
                 <Ionicons name='ios-cash' style={[styles.logo, { color: colors.secondary }]} />
               Thăm lại
             </Text>
-              <Text
-                style={styles.indexValueSmall}
-              >
+              <Text style={styles.indexValueSmall} >
                 {props.todoCal.todoRevisit.case}
               </Text>
             </TouchableOpacity>
           </View>
-
-        </TouchableOpacity>
-
-
-
-        {/* BEGIN ToTal */}
-        <TouchableOpacity
-          style={[cardStyles.container, { flex: 1.328 }]}
-        >
+        </TouchableOpacity> */}
+        {/* <TouchableOpacity style={[cardStyles.container, { flex: 1.328 }]} >
           <View style={[styles.row, { flex: 0.5 }]}>
             <Text style={[cardStyles.Text, { color: colors.lightGray }]}>
               Thông tin danh mục
             </Text>
           </View>
-
           <View style={[styles.row, { flex: 1.618 }]}>
             <View style={[styles.box]}>
               <TouchableOpacity
@@ -210,7 +153,6 @@ function Dashboard(props) {
                 </Text>
               </TouchableOpacity>
             </View>
-
             <View style={[styles.box]}>
               <TouchableOpacity
                 style={[cardStyles.container, styles.box]}
@@ -222,7 +164,6 @@ function Dashboard(props) {
                 </Text>
               </TouchableOpacity>
             </View>
-
             <View style={[styles.box]}>
               <TouchableOpacity
                 style={[cardStyles.container, styles.box]}
@@ -232,14 +173,10 @@ function Dashboard(props) {
                   style={styles.indexValue}
                 >{props.totalCal.ptpCase.case}
                 </Text>
-
               </TouchableOpacity>
             </View>
           </View>
         </TouchableOpacity>
-        {/* END ToTal */}
-
-        {/* BEGIN Paid */}
         <TouchableOpacity
           style={[cardStyles.container, { flex: 1 }]}
           onPress={() => handleShow(props.totalCal.paidAll.applIds, true)}>
@@ -255,7 +192,6 @@ function Dashboard(props) {
                 style={[styles.indexValueSmall, { color: colors.green }]}
               >{props.totalCal.paidMtd.case}
               </Text>
-
             </View>
             <View style={[styles.box]}>
               <Text style={styles.indexLabel}>Số tiền thu</Text>
@@ -263,11 +199,9 @@ function Dashboard(props) {
                 style={[styles.indexValueSmall, { color: colors.green }]}
               >{moneyFormat(props.totalCal.paidMtd.value)}
               </Text>
-
             </View>
           </View>
         </TouchableOpacity>
-
         <TouchableOpacity
           style={[cardStyles.container, { flex: 1 }]}
           onPress={() => handleShow(props.totalCal.paidToday.applIds, true)}>
@@ -283,7 +217,6 @@ function Dashboard(props) {
                 style={[styles.indexValueSmall, { color: colors.green }]}
               >{props.totalCal.paidToday.case}
               </Text>
-
             </View>
             <View style={[styles.box]}>
               <Text style={styles.indexLabel}>Số tiền thu</Text>
@@ -291,22 +224,13 @@ function Dashboard(props) {
                 style={[styles.indexValueSmall, { color: colors.green }]}
               >{moneyFormat(props.totalCal.paidToday.value)}
               </Text>
-
             </View>
           </View>
-        </TouchableOpacity>
-        {/* END Paid */}
-
-
+        </TouchableOpacity> */}
       </View>
-
       <View style={{ flex: 0.138}}>
-
       </View>
-
     </View>
-
-
   )
 }
 
@@ -324,7 +248,6 @@ const cardStyles = StyleSheet.create({
       height: 0,
     },
     shadowOpacity: 24,
-    // justifyContent: 'center',
   },
   wrapper: {
     flex: 0.5,
@@ -339,7 +262,6 @@ const cardStyles = StyleSheet.create({
   content: {
     flex: 0.7,
     justifyContent: 'center',
-    // alignItems: 'center',
   },
   dot: {
     backgroundColor: '#3FE77B',
@@ -397,7 +319,69 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'stretch',
+  },
+  ViewSummary:{
+    height: 100,
+    width: '95%',
+    borderRadius: 10,
+    marginLeft:'auto',
+    marginRight:'auto',
+    marginBottom:150,
+    top:-50,
+    flexDirection:'row',
+    backgroundColor: 'rgba(255,255,255,1)',
+    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  ViewSummarychild:{
+    height:'95%',
+    width:'45%',
+    marginLeft:'5%',
+    paddingLeft:5,
+    paddingRight:5,
+    fontSize:10
+  },
+  ViewPaidTotal:{
+    height:170,
+    width:'100%',
+    backgroundColor:colors.primary,
+    flexDirection:'row',
+  },
+  Titleinfo:{
+    fontSize:14
+  },
+  indexValue: {
+    textAlign: 'center', // <-- the magic
+    fontWeight: 'bold',
+    fontSize: 50,
+    paddingTop: 2,
+    color: colors.light,
+  },
+  indexValueSmall: {
+    textAlign: 'center', // <-- the magic
+    fontWeight: 'bold',
+    fontSize: 50,
+    paddingTop: 2,
+    color: colors.black
+  },
+  indexLabel: {
+    textAlign: 'center', // <-- the magic
+    fontSize: 10,
+    paddingBottom: 2,
+  },
 
-
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
 
